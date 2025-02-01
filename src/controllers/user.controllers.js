@@ -339,7 +339,7 @@ const getUserChannelProfile= asyncHandler(async (req,res)=>{
     {
       $addFields :{
         subscribersCount: {
-          $size: "$subscriber"
+          $size: "$subscribers"
         },
         channelSubscribedToCount :{
           $size: "$subscribedTo"
@@ -423,11 +423,11 @@ const getWatchHistory= asyncHandler(async(req,res)=>{
       }
     }
   ])
-
+console.log(user);
   return res
   .status(200)
   .json(
-    new ApiResponse(200, user[0].WatchHistory,"watch history fetched successfully")
+    new ApiResponse(200, user[0].watchHistory,"watch history fetched successfully")
   )
 
 })
